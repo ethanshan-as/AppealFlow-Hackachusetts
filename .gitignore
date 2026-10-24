@@ -7,3 +7,4 @@ dist/
 .DS_Store
 coverage/
 # Deliberately do NOT ignore .kiro/ — real Kiro usage files are required.
+*.tsbuildinfo
