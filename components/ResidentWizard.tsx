@@ -25,6 +25,7 @@ import { Badge, ErrorNote, IndependenceNotice, SectionCard, Spinner, StatusBadge
 import { MicButton, ReadAloudButton } from "./voice";
 import { CaseTimeline } from "./CaseTimeline";
 import { CaseInsights } from "./CaseInsights";
+import { SubmissionHandoff } from "./SubmissionHandoff";
 
 const EVIDENCE_KINDS = [
   "payment_receipt",
@@ -616,6 +617,9 @@ function DraftPanel({
       <p className="mt-3 rounded-md bg-slate-50 px-3 py-2 text-xs text-slate-600">
         {t("resident.submitNote")}
       </p>
+      <div className="mt-4">
+        <SubmissionHandoff active={active} />
+      </div>
     </div>
   );
 }

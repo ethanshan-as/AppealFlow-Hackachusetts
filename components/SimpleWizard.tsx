@@ -16,6 +16,7 @@ import { useLang } from "./LangContext";
 import { Badge, ErrorNote, IndependenceNotice, Spinner, StatusBadge } from "./ui";
 import { MicButton, ReadAloudButton } from "./voice";
 import { CaseInsights } from "./CaseInsights";
+import { SubmissionHandoff } from "./SubmissionHandoff";
 
 /**
  * Simple Mode (P1 #5, #6): one question per screen, large buttons, 18px+ text,
@@ -363,6 +364,7 @@ function SimpleDraft({
       <p className="rounded-md bg-slate-50 px-4 py-3 text-base text-slate-600">
         {t("resident.submitNote")}
       </p>
+      <SubmissionHandoff active={active} />
     </div>
   );
 }

@@ -57,10 +57,15 @@ const en: Dict = {
     "Please do not enter real personal information such as a name, license plate, ticket number, or barcode.",
   "resident.pickScenario": "What best describes your situation?",
   "resident.scenario.payment": "I think I paid or had a valid permit",
-  "resident.scenario.breakdown": "My vehicle broke down",
-  "resident.scenario.unclear_sign": "The sign or marking was unclear",
+  "resident.scenario.breakdown": "My vehicle broke down or was towed",
+  "resident.scenario.unclear_sign": "The sign or marking was unclear or damaged",
+  "resident.scenario.permit": "Residential parking permit confusion",
+  "resident.scenario.street_cleaning":
+    "Street cleaning or temporary restriction",
+  "resident.scenario.incorrect_ticket":
+    "Wrong vehicle, plate, time, or location on the ticket",
   "resident.scenario.extraordinary_circumstances":
-    "There were extraordinary circumstances",
+    "Accessibility or extraordinary circumstances",
   "resident.scenario.other": "Something else",
   "resident.answer": "Answer",
   "resident.next": "Next",
@@ -158,9 +163,60 @@ const en: Dict = {
   "q.brk_q3.c2": "A message or call log with a time",
   "q.brk_q3.c3": "No time record is available",
 
+  // Questions — unclear/damaged/obstructed sign
+  "q.sign_q1": "What was the problem with the sign or marking?",
+  "q.sign_c1": "The sign was missing, damaged, or faded",
+  "q.sign_c2": "The sign was blocked or hard to see",
+  "q.sign_c3": "The sign or marking was confusing or contradictory",
+  "q.sign_q2": "What could you show about the sign?",
+  "q.sign_e1": "A photo of the sign or location",
+  "q.sign_e2": "A note describing where it was",
+  "q.sign_e3": "No photo is available",
+
+  // Questions — residential parking permit
+  "q.perm_q1": "What is the situation with your parking permit?",
+  "q.perm_c1": "I hold a valid permit for this area",
+  "q.perm_c2": "My permit was being renewed or processed",
+  "q.perm_c3": "The permit zone boundary was unclear to me",
+  "q.perm_q2": "What could you show about the permit?",
+  "q.perm_e1": "The permit itself or its number",
+  "q.perm_e2": "A renewal or application record",
+  "q.perm_e3": "No permit record is available",
+
+  // Questions — street cleaning / temporary restriction
+  "q.clean_q1": "What happened with the temporary restriction?",
+  "q.clean_c1": "The restriction sign was posted late or not visible",
+  "q.clean_c2": "The posted time did not match when I was ticketed",
+  "q.clean_c3": "The restriction appeared to be lifted or inactive",
+  "q.clean_q2": "What could you show about the timing?",
+  "q.clean_e1": "A photo with a time or date",
+  "q.clean_e2": "A note about when you parked",
+  "q.clean_e3": "No time record is available",
+
+  // Questions — incorrect vehicle / plate / time / location
+  "q.inc_q1": "What on the ticket appears to be incorrect?",
+  "q.inc_c1": "The vehicle or make does not match mine",
+  "q.inc_c2": "The license plate is wrong",
+  "q.inc_c3": "The time does not match when I was there",
+  "q.inc_c4": "The location or street is wrong",
+  "q.inc_q2": "What could you show to compare?",
+  "q.inc_e1": "A photo or document showing the correct detail",
+  "q.inc_e2": "A record of my actual plate or vehicle",
+  "q.inc_e3": "No supporting record is available",
+
+  // Questions — accessibility / extraordinary circumstances
+  "q.extra_q1": "What best describes the circumstance?",
+  "q.extra_c1": "An accessibility or medical need was involved",
+  "q.extra_c2": "An emergency required me to stop",
+  "q.extra_c3": "Another unavoidable situation occurred",
+  "q.extra_q2": "What could you show about it?",
+  "q.extra_e1": "A document or record related to the situation",
+  "q.extra_e2": "A note explaining what happened",
+  "q.extra_e3": "No supporting record is available",
+
   // Stub + other
   "q.stub":
-    "This situation type is not yet fully guided in this demo. You can still describe it in your own words below, add evidence, and generate a draft.",
+    "You can describe your situation in your own words below, add evidence, and generate a draft.",
   "choice.other_not_sure": "Other / not sure",
 
   // Generic UI
@@ -198,6 +254,18 @@ const en: Dict = {
   // Translation warning (P0 #3)
   "translation.needed":
     "Some statements are in your language and were not translated into English. Translate the marked lines before submitting.",
+
+  // Submission handoff (P3)
+  "handoff.title": "Submit at the official Boston portal",
+  "handoff.reviewedBy":
+    "Boston parking tickets are reviewed by the City of Boston Office of the Parking Clerk — not the RMV.",
+  "handoff.openPortal": "Open the official Boston appeal portal",
+  "handoff.noAuto":
+    "AppealFlow does not submit anything for you and never marks a ticket submitted without an official receipt.",
+  "handoff.checklist": "Evidence checklist",
+  "handoff.checkDraft": "Copy your appeal letter",
+  "handoff.checkAttached": "Attach your supporting evidence",
+  "handoff.checkMissing": "Still needed before you submit",
 };
 
 const zh: Dict = {
@@ -228,9 +296,12 @@ const zh: Dict = {
     "请勿输入真实个人信息，如姓名、车牌、罚单编号或条形码。",
   "resident.pickScenario": "以下哪项最符合您的情况？",
   "resident.scenario.payment": "我认为我已付费或持有有效许可",
-  "resident.scenario.breakdown": "我的车辆发生故障",
-  "resident.scenario.unclear_sign": "标志或标线不清晰",
-  "resident.scenario.extraordinary_circumstances": "存在特殊情况",
+  "resident.scenario.breakdown": "我的车辆发生故障或被拖走",
+  "resident.scenario.unclear_sign": "标志或标线不清晰或损坏",
+  "resident.scenario.permit": "居民停车许可相关困惑",
+  "resident.scenario.street_cleaning": "街道清扫或临时限制",
+  "resident.scenario.incorrect_ticket": "罚单上的车辆、车牌、时间或地点有误",
+  "resident.scenario.extraordinary_circumstances": "无障碍需要或特殊情况",
   "resident.scenario.other": "其他情况",
   "resident.answer": "回答",
   "resident.next": "下一步",
@@ -322,8 +393,54 @@ const zh: Dict = {
   "q.brk_q3.c2": "带时间的短信或通话记录",
   "q.brk_q3.c3": "没有时间记录",
 
+  "q.sign_q1": "标志或标线存在什么问题？",
+  "q.sign_c1": "标志缺失、损坏或褪色",
+  "q.sign_c2": "标志被遮挡或难以看清",
+  "q.sign_c3": "标志或标线令人困惑或相互矛盾",
+  "q.sign_q2": "关于该标志，您能出示什么？",
+  "q.sign_e1": "标志或地点的照片",
+  "q.sign_e2": "描述其位置的说明",
+  "q.sign_e3": "没有照片",
+
+  "q.perm_q1": "您的停车许可情况如何？",
+  "q.perm_c1": "我持有该区域的有效许可",
+  "q.perm_c2": "我的许可正在续办或办理中",
+  "q.perm_c3": "我不清楚许可区域的边界",
+  "q.perm_q2": "关于许可，您能出示什么？",
+  "q.perm_e1": "许可本身或其编号",
+  "q.perm_e2": "续办或申请记录",
+  "q.perm_e3": "没有许可记录",
+
+  "q.clean_q1": "临时限制发生了什么情况？",
+  "q.clean_c1": "限制标志张贴过晚或不可见",
+  "q.clean_c2": "张贴的时间与开罚单的时间不符",
+  "q.clean_c3": "限制似乎已解除或无效",
+  "q.clean_q2": "关于时间，您能出示什么？",
+  "q.clean_e1": "带时间或日期的照片",
+  "q.clean_e2": "关于停车时间的说明",
+  "q.clean_e3": "没有时间记录",
+
+  "q.inc_q1": "罚单上的哪项信息似乎有误？",
+  "q.inc_c1": "车辆或品牌与我的不符",
+  "q.inc_c2": "车牌号码有误",
+  "q.inc_c3": "时间与我在场的时间不符",
+  "q.inc_c4": "地点或街道有误",
+  "q.inc_q2": "您能出示什么进行比对？",
+  "q.inc_e1": "显示正确信息的照片或文件",
+  "q.inc_e2": "我实际车牌或车辆的记录",
+  "q.inc_e3": "没有佐证记录",
+
+  "q.extra_q1": "以下哪项最符合该情况？",
+  "q.extra_c1": "涉及无障碍或医疗需要",
+  "q.extra_c2": "紧急情况迫使我停车",
+  "q.extra_c3": "发生了其他不可避免的情况",
+  "q.extra_q2": "关于此情况，您能出示什么？",
+  "q.extra_e1": "与该情况相关的文件或记录",
+  "q.extra_e2": "说明经过的文字",
+  "q.extra_e3": "没有佐证记录",
+
   "q.stub":
-    "本演示尚未对该情况类型提供完整引导。您仍可在下方用自己的话描述、添加证据并生成草稿。",
+    "您可在下方用自己的话描述情况、添加证据并生成草稿。",
   "choice.other_not_sure": "其他 / 不确定",
 
   "ui.loading": "处理中……",
@@ -357,6 +474,17 @@ const zh: Dict = {
 
   "translation.needed":
     "部分陈述仍为您的母语，尚未翻译成英文。提交前请翻译标记的行。",
+
+  "handoff.title": "在波士顿官方门户提交",
+  "handoff.reviewedBy":
+    "波士顿停车罚单由波士顿市停车文员办公室审核，而非机动车管理局（RMV）。",
+  "handoff.openPortal": "打开波士顿官方申诉门户",
+  "handoff.noAuto":
+    "AppealFlow 不会代您提交任何内容，也绝不会在没有官方回执的情况下将罚单标记为已提交。",
+  "handoff.checklist": "证据清单",
+  "handoff.checkDraft": "复制您的申诉信",
+  "handoff.checkAttached": "附上您的佐证证据",
+  "handoff.checkMissing": "提交前仍需补充",
 };
 
 const es: Dict = {
@@ -388,10 +516,14 @@ const es: Dict = {
     "No ingreses información personal real como nombre, placa, número de multa o código de barras.",
   "resident.pickScenario": "¿Qué describe mejor tu situación?",
   "resident.scenario.payment": "Creo que pagué o tenía un permiso válido",
-  "resident.scenario.breakdown": "Mi vehículo se averió",
-  "resident.scenario.unclear_sign": "La señal o marca no estaba clara",
+  "resident.scenario.breakdown": "Mi vehículo se averió o fue remolcado",
+  "resident.scenario.unclear_sign": "La señal o marca no estaba clara o dañada",
+  "resident.scenario.permit": "Confusión con el permiso de estacionamiento residencial",
+  "resident.scenario.street_cleaning": "Limpieza de calles o restricción temporal",
+  "resident.scenario.incorrect_ticket":
+    "Vehículo, placa, hora o lugar incorrectos en la multa",
   "resident.scenario.extraordinary_circumstances":
-    "Hubo circunstancias extraordinarias",
+    "Accesibilidad o circunstancias extraordinarias",
   "resident.scenario.other": "Otra cosa",
   "resident.answer": "Responder",
   "resident.next": "Siguiente",
@@ -484,8 +616,54 @@ const es: Dict = {
   "q.brk_q3.c2": "Un mensaje o registro de llamada con hora",
   "q.brk_q3.c3": "No hay registro de tiempo disponible",
 
+  "q.sign_q1": "¿Cuál fue el problema con la señal o marca?",
+  "q.sign_c1": "La señal faltaba, estaba dañada o descolorida",
+  "q.sign_c2": "La señal estaba tapada o difícil de ver",
+  "q.sign_c3": "La señal o marca era confusa o contradictoria",
+  "q.sign_q2": "¿Qué podrías mostrar sobre la señal?",
+  "q.sign_e1": "Una foto de la señal o del lugar",
+  "q.sign_e2": "Una nota que describa dónde estaba",
+  "q.sign_e3": "No hay foto disponible",
+
+  "q.perm_q1": "¿Cuál es la situación con tu permiso de estacionamiento?",
+  "q.perm_c1": "Tengo un permiso válido para esta zona",
+  "q.perm_c2": "Mi permiso estaba en renovación o trámite",
+  "q.perm_c3": "El límite de la zona de permiso no me quedaba claro",
+  "q.perm_q2": "¿Qué podrías mostrar sobre el permiso?",
+  "q.perm_e1": "El permiso o su número",
+  "q.perm_e2": "Un registro de renovación o solicitud",
+  "q.perm_e3": "No hay registro del permiso",
+
+  "q.clean_q1": "¿Qué pasó con la restricción temporal?",
+  "q.clean_c1": "La señal se colocó tarde o no era visible",
+  "q.clean_c2": "La hora indicada no coincidía con la de la multa",
+  "q.clean_c3": "La restricción parecía levantada o inactiva",
+  "q.clean_q2": "¿Qué podrías mostrar sobre el horario?",
+  "q.clean_e1": "Una foto con hora o fecha",
+  "q.clean_e2": "Una nota sobre cuándo estacionaste",
+  "q.clean_e3": "No hay registro de tiempo disponible",
+
+  "q.inc_q1": "¿Qué dato de la multa parece incorrecto?",
+  "q.inc_c1": "El vehículo o la marca no coincide con el mío",
+  "q.inc_c2": "La placa es incorrecta",
+  "q.inc_c3": "La hora no coincide con cuando estuve ahí",
+  "q.inc_c4": "El lugar o la calle es incorrecto",
+  "q.inc_q2": "¿Qué podrías mostrar para comparar?",
+  "q.inc_e1": "Una foto o documento con el dato correcto",
+  "q.inc_e2": "Un registro de mi placa o vehículo reales",
+  "q.inc_e3": "No hay registro de respaldo",
+
+  "q.extra_q1": "¿Qué describe mejor la circunstancia?",
+  "q.extra_c1": "Hubo una necesidad de accesibilidad o médica",
+  "q.extra_c2": "Una emergencia me obligó a detenerme",
+  "q.extra_c3": "Ocurrió otra situación inevitable",
+  "q.extra_q2": "¿Qué podrías mostrar al respecto?",
+  "q.extra_e1": "Un documento o registro relacionado",
+  "q.extra_e2": "Una nota explicando lo sucedido",
+  "q.extra_e3": "No hay registro de respaldo",
+
   "q.stub":
-    "Este tipo de situación aún no tiene guía completa en esta demo. Puedes describirla con tus propias palabras abajo, agregar evidencia y generar un borrador.",
+    "Puedes describir tu situación con tus propias palabras abajo, agregar evidencia y generar un borrador.",
   "choice.other_not_sure": "Otro / no estoy seguro",
 
   "ui.loading": "Trabajando…",
@@ -519,6 +697,17 @@ const es: Dict = {
 
   "translation.needed":
     "Algunas declaraciones están en tu idioma y no se tradujeron al inglés. Traduce las líneas marcadas antes de enviar.",
+
+  "handoff.title": "Envía en el portal oficial de Boston",
+  "handoff.reviewedBy":
+    "Las multas de estacionamiento de Boston las revisa la Oficina del Secretario de Estacionamiento de la Ciudad de Boston, no el RMV.",
+  "handoff.openPortal": "Abrir el portal oficial de apelaciones de Boston",
+  "handoff.noAuto":
+    "AppealFlow no envía nada por ti y nunca marca una multa como enviada sin un recibo oficial.",
+  "handoff.checklist": "Lista de evidencia",
+  "handoff.checkDraft": "Copia tu carta de apelación",
+  "handoff.checkAttached": "Adjunta tu evidencia de respaldo",
+  "handoff.checkMissing": "Aún necesario antes de enviar",
 };
 
 export const translations: Record<Lang, Dict> = { en, zh, es };

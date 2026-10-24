@@ -11,6 +11,9 @@ export type Scenario =
   | "payment"
   | "breakdown"
   | "unclear_sign"
+  | "permit"
+  | "street_cleaning"
+  | "incorrect_ticket"
   | "extraordinary_circumstances"
   | "other";
 
@@ -18,6 +21,9 @@ export const SCENARIOS: Scenario[] = [
   "payment",
   "breakdown",
   "unclear_sign",
+  "permit",
+  "street_cleaning",
+  "incorrect_ticket",
   "extraordinary_circumstances",
   "other",
 ];

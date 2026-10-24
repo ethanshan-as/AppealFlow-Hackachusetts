@@ -120,20 +120,80 @@ const BREAKDOWN_BANK: BranchQuestion[] = [
   },
 ];
 
+/* -------------------------------------------------------------------------- */
+/* Simple flat banks for the remaining scenarios (2–3 questions each).         */
+/* Each question's choices describe the situation or available evidence; none  */
+/* assumes the situation legally excuses the violation, and none invents rules.*/
+/* -------------------------------------------------------------------------- */
+
+function flatBank(
+  scenario: Scenario,
+  qs: { id: string; choices: string[] }[]
+): BranchQuestion[] {
+  return qs.map((q, i) => {
+    const isLast = i === qs.length - 1;
+    const choices = q.choices.map((cid) => ({ id: cid, labelKey: `q.${cid}` }));
+    const next: Record<string, string | null> = {};
+    for (const ch of choices) next[ch.id] = isLast ? null : qs[i + 1].id;
+    return {
+      id: q.id,
+      scenario,
+      order: i + 1,
+      promptKey: `q.${q.id}`,
+      choices,
+      next,
+    };
+  });
+}
+
+const SIGN_BANK = flatBank("unclear_sign", [
+  { id: "sign_q1", choices: ["sign_c1", "sign_c2", "sign_c3"] },
+  { id: "sign_q2", choices: ["sign_e1", "sign_e2", "sign_e3"] },
+]);
+
+const PERMIT_BANK = flatBank("permit", [
+  { id: "perm_q1", choices: ["perm_c1", "perm_c2", "perm_c3"] },
+  { id: "perm_q2", choices: ["perm_e1", "perm_e2", "perm_e3"] },
+]);
+
+const CLEANING_BANK = flatBank("street_cleaning", [
+  { id: "clean_q1", choices: ["clean_c1", "clean_c2", "clean_c3"] },
+  { id: "clean_q2", choices: ["clean_e1", "clean_e2", "clean_e3"] },
+]);
+
+const INCORRECT_BANK = flatBank("incorrect_ticket", [
+  { id: "inc_q1", choices: ["inc_c1", "inc_c2", "inc_c3", "inc_c4"] },
+  { id: "inc_q2", choices: ["inc_e1", "inc_e2", "inc_e3"] },
+]);
+
+const EXTRA_BANK = flatBank("extraordinary_circumstances", [
+  { id: "extra_q1", choices: ["extra_c1", "extra_c2", "extra_c3"] },
+  { id: "extra_q2", choices: ["extra_e1", "extra_e2", "extra_e3"] },
+]);
+
 export const BRANCH_BANKS: Partial<Record<Scenario, BranchQuestion[]>> = {
   payment: PAYMENT_BANK,
   breakdown: BREAKDOWN_BANK,
+  unclear_sign: SIGN_BANK,
+  permit: PERMIT_BANK,
+  street_cleaning: CLEANING_BANK,
+  incorrect_ticket: INCORRECT_BANK,
+  extraordinary_circumstances: EXTRA_BANK,
 };
 
 /** Scenarios that are fully built with a branch bank. */
-export const BUILT_SCENARIOS: Scenario[] = ["payment", "breakdown"];
-
-/** Scenarios that route through the informational stub flow (Req 3.3). */
-export const STUB_SCENARIOS: Scenario[] = [
+export const BUILT_SCENARIOS: Scenario[] = [
+  "payment",
+  "breakdown",
   "unclear_sign",
+  "permit",
+  "street_cleaning",
+  "incorrect_ticket",
   "extraordinary_circumstances",
-  "other",
 ];
+
+/** Only free-form "other" routes through the informational stub flow. */
+export const STUB_SCENARIOS: Scenario[] = ["other"];
 
 /** Single informational step for the three stubbed scenarios (Req 3.3). */
 export const STUB_FLOW = {
