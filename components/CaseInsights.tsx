@@ -2,6 +2,8 @@
 
 import { AppealCase } from "@/lib/case";
 import { caseCounts, isEvidenceVerified } from "@/lib/caseInsights";
+import { intelligenceReport } from "@/lib/intelligenceEngine";
+import { questionById } from "@/lib/questions";
 import { officialSources } from "@/lib/rules";
 import { useLang } from "./LangContext";
 import { Badge, SectionCard } from "./ui";
@@ -28,12 +30,43 @@ function ruleForScenario(scenario: string): string {
 export function CaseInsights({ active }: { active: AppealCase }) {
   const { t } = useLang();
   const counts = caseCounts(active);
+  const report = intelligenceReport(active);
   const sources = officialSources();
   const rule = sources.find((s) => s.id === ruleForScenario(active.scenario)) ?? sources[0];
   const verifiedEvidence = active.evidence.filter(isEvidenceVerified);
 
+  const nextQ = report.nextBest.questionId
+    ? questionById(active.scenario, report.nextBest.questionId)
+    : undefined;
+
   return (
     <SectionCard title={t("insights.title")}>
+      {/* Preparation indicator — explicitly NOT a success prediction */}
+      <div className="mb-4 rounded-md border border-slate-200 bg-slate-50 p-3">
+        <div className="flex items-center justify-between">
+          <span className="text-sm font-medium text-slate-700">
+            {t("insights.prep")}
+          </span>
+          <span className="text-2xl font-bold text-brand-700">
+            {report.preparationScore}
+            <span className="text-base font-normal text-slate-400">/100</span>
+          </span>
+        </div>
+        <Meter label={t("insights.completeness")} ratio={report.completeness.ratio} />
+        <Meter label={t("insights.coverage")} ratio={report.coverage.ratio} />
+        <p className="mt-2 text-xs italic text-slate-500">{t("insights.prepNote")}</p>
+      </div>
+
+      {/* Next Best Question (deterministic) */}
+      <div className="mb-4 rounded-md border border-brand-200 bg-brand-50 p-3 text-sm">
+        <span className="font-medium text-brand-800">💡 {t("insights.nextBest")}: </span>
+        {nextQ ? (
+          <span className="text-slate-800">{t(nextQ.promptKey)}</span>
+        ) : (
+          <span className="text-slate-700">{t("insights.nextBestComplete")}</span>
+        )}
+      </div>
+
       {/* Counts grid — all from real case data */}
       <dl className="grid grid-cols-2 gap-3 sm:grid-cols-4">
         <Stat label={t("insights.claims")} value={counts.claims} />
@@ -109,7 +142,36 @@ export function CaseInsights({ active }: { active: AppealCase }) {
           ))}
         </ul>
       )}
+
+      <p className="mt-4 border-t border-slate-100 pt-3 text-xs text-slate-400">
+        {t("insights.deterministic")}
+      </p>
     </SectionCard>
+  );
+}
+
+function Meter({ label, ratio }: { label: string; ratio: number }) {
+  const pct = Math.round(Math.max(0, Math.min(1, ratio)) * 100);
+  return (
+    <div className="mt-2">
+      <div className="mb-1 flex justify-between text-xs text-slate-600">
+        <span>{label}</span>
+        <span>{pct}%</span>
+      </div>
+      <div
+        className="h-2 w-full overflow-hidden rounded-full bg-slate-200"
+        role="progressbar"
+        aria-label={label}
+        aria-valuenow={pct}
+        aria-valuemin={0}
+        aria-valuemax={100}
+      >
+        <div
+          className="h-full bg-brand-600 transition-all"
+          style={{ width: `${pct}%` }}
+        />
+      </div>
+    </div>
   );
 }
 

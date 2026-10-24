@@ -250,6 +250,14 @@ const en: Dict = {
   "insights.traceRule": "Related official rule",
   "insights.noEvidence": "No attached evidence yet",
   "insights.noTrace": "Add a claim to see how it connects to evidence and official rules.",
+  "insights.completeness": "Factual completeness",
+  "insights.coverage": "Evidence coverage",
+  "insights.prep": "Case preparation",
+  "insights.prepNote":
+    "A case preparation indicator computed from your answers and attached evidence. It is NOT a prediction of appeal success.",
+  "insights.nextBest": "Suggested next step",
+  "insights.nextBestComplete": "All required questions for this scenario are answered.",
+  "insights.deterministic": "Deterministic analytics — no AI inference, no trained model.",
 
   // Translation warning (P0 #3)
   "translation.needed":
@@ -471,6 +479,14 @@ const zh: Dict = {
   "insights.traceRule": "相关官方规则",
   "insights.noEvidence": "尚无已附证据",
   "insights.noTrace": "添加一条主张，即可查看它与证据和官方规则的关联。",
+  "insights.completeness": "事实完整度",
+  "insights.coverage": "证据覆盖率",
+  "insights.prep": "案件准备度",
+  "insights.prepNote":
+    "根据您的回答和已附证据计算的案件准备度指标。它不是对申诉成功与否的预测。",
+  "insights.nextBest": "建议的下一步",
+  "insights.nextBestComplete": "该情况所需的问题均已回答。",
+  "insights.deterministic": "确定性分析——无 AI 推理，无训练模型。",
 
   "translation.needed":
     "部分陈述仍为您的母语，尚未翻译成英文。提交前请翻译标记的行。",
@@ -694,6 +710,14 @@ const es: Dict = {
   "insights.traceRule": "Regla oficial relacionada",
   "insights.noEvidence": "Aún no hay evidencia adjunta",
   "insights.noTrace": "Agrega una afirmación para ver cómo se conecta con la evidencia y las reglas oficiales.",
+  "insights.completeness": "Completitud de los hechos",
+  "insights.coverage": "Cobertura de evidencia",
+  "insights.prep": "Preparación del caso",
+  "insights.prepNote":
+    "Un indicador de preparación del caso calculado a partir de tus respuestas y la evidencia adjunta. NO es una predicción del éxito de la apelación.",
+  "insights.nextBest": "Siguiente paso sugerido",
+  "insights.nextBestComplete": "Todas las preguntas requeridas para esta situación están respondidas.",
+  "insights.deterministic": "Analítica determinista: sin inferencia de IA, sin modelo entrenado.",
 
   "translation.needed":
     "Algunas declaraciones están en tu idioma y no se tradujeron al inglés. Traduce las líneas marcadas antes de enviar.",

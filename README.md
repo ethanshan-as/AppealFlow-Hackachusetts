@@ -99,12 +99,56 @@ committed.
 ## Tests
 
 `npm run test` runs Vitest with `fast-check` property tests over `lib/`.
-**22 tests pass** across 3 files, covering the 12 correctness properties from
+**46 tests pass** across 5 files, covering the 12 correctness properties from
 the design, including: the payment/breakdown branch flow (2–4 sequential,
 neutral, unselected questions), fact provenance (`source` +
 `verificationStatus`), the status‑transition rules, no fabricated laws/case‑ids,
 no win‑probability language, the deterministic fallback, and full trilingual
 coverage of every branch question.
+
+## Case Intelligence Engine (deterministic analytics)
+
+The Case Intelligence panel is powered by `lib/intelligenceEngine.ts`, a
+lightweight, fully explainable, **deterministic** layer. It trains no model,
+downloads no dataset, makes no network call, and predicts no appeal outcome.
+Every number is computed by explicit rules over the actual `AppealCase`.
+
+What it computes:
+
+- **Factual completeness** — each scenario has an explicit set of required facts
+  (the scenario's branch-bank questions). Completeness =
+  `answered required questions / total required questions`. Free-form "other"
+  is complete once at least one claim exists.
+- **Evidence coverage** — computed ONLY from actually attached evidence
+  (`status: "uploaded"`). Simulated/demo placeholders and missing items never
+  count, so **no evidence always means zero verified evidence** (enforced by a
+  test). Coverage = `attached / total evidence items`.
+- **Next Best Question** — a deterministic selector that returns the
+  lowest-order unanswered required question for the scenario and never repeats
+  an answered one, reporting "complete" when the required set is satisfied.
+- **Preparation score (0–100)** — the average of factual completeness and
+  evidence coverage.
+
+These are **case preparation indicators, not appeal-success predictions**. The
+panel labels them as such, and the UI carries a "Deterministic analytics — no AI
+inference, no trained model" note.
+
+How this differs from the other layers:
+
+| Layer | What it is | Where |
+| --- | --- | --- |
+| Case Intelligence Engine | Deterministic analytics — explicit arithmetic over case data | `lib/intelligenceEngine.ts` |
+| LLM inference (optional) | A configured model may translate text, rewrite a draft, or reword a question. Server-side only, validated, with deterministic fallback | `app/api/appeal`, `app/api/next-question` |
+| Trained machine learning | **Not used anywhere.** No model is trained, bundled, or downloaded | — |
+
+The metrics update live as the resident answers questions, because the panel
+re-reads the shared `Case_Store` on every change.
+
+Tests for the engine live in `lib/intelligenceEngine.test.ts` and prove the
+metrics change correctly (completeness rises as required facts are answered;
+coverage rises only when evidence is attached), that Next Best Question
+prioritizes missing facts without repeats, and the no-evidence/no-verified
+invariant.
 
 ## Limitations
 
