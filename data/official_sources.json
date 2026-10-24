@@ -1,0 +1,23 @@
+[
+  {
+    "id": "boston_appeal",
+    "title": "Boston.gov — How to Appeal a Parking Ticket",
+    "url": "https://www.boston.gov/departments/parking-clerk/how-appeal-parking-ticket",
+    "purpose": "Authoritative appeal path, official submission and confirmation guidance",
+    "verificationNote": "Validate text and dates against the live official page; do not infer eligibility"
+  },
+  {
+    "id": "boston_faq",
+    "title": "Boston.gov — Parking Ticket FAQs",
+    "url": "https://www.boston.gov/departments/parking-clerk/parking-ticket-faqs",
+    "purpose": "Common appeal and vehicle-breakdown questions",
+    "verificationNote": "Quote only independently verified rules"
+  },
+  {
+    "id": "boston_codes",
+    "title": "Boston.gov — Parking Ticket Fines and Codes",
+    "url": "https://www.boston.gov/departments/parking-clerk/parking-ticket-fines-and-codes",
+    "purpose": "Local fine or violation code reference",
+    "verificationNote": "Avoid fixed fee or code claims unless checked"
+  }
+]

@@ -1,0 +1,34 @@
+[
+  {
+    "caseId": "DEMO-001",
+    "isSynthetic": true,
+    "city": "Boston",
+    "violationType": "Parking meter payment dispute",
+    "ticketDate": "2026-10-10",
+    "scenario": "payment",
+    "residencyLanguage": "es",
+    "statement": "I paid for parking but received a citation. I need to compare my payment receipt with the time and zone on the ticket.",
+    "selectedFacts": [
+      {"id":"f1","text":"I believe I paid for the parking session.","source":"resident_answer","verificationStatus":"claimed"},
+      {"id":"f2","text":"I can provide a parking payment receipt.","source":"resident_answer","verificationStatus":"claimed"}
+    ],
+    "evidence": [{"kind":"payment_receipt","label":"Example receipt (not attached)","status":"missing"}],
+    "status": "draft"
+  },
+  {
+    "caseId": "DEMO-002",
+    "isSynthetic": true,
+    "city": "Boston",
+    "violationType": "No parking / vehicle breakdown",
+    "ticketDate": "2026-10-12",
+    "scenario": "breakdown",
+    "residencyLanguage": "zh",
+    "statement": "My car would not restart and I was arranging a tow. This explanation still requires evidence and review.",
+    "selectedFacts": [
+      {"id":"f1","text":"The vehicle could not restart near the citation time.","source":"resident_answer","verificationStatus":"claimed"},
+      {"id":"f2","text":"I contacted a tow service.","source":"resident_answer","verificationStatus":"claimed"}
+    ],
+    "evidence": [{"kind":"tow_receipt","label":"Example tow receipt (not attached)","status":"missing"}],
+    "status": "draft"
+  }
+]

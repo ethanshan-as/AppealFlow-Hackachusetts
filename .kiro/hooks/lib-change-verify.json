@@ -1,0 +1,16 @@
+{
+  "version": "v1",
+  "hooks": [
+    {
+      "name": "Verify lib changes",
+      "trigger": "PostFileSave",
+      "description": "Runs typecheck and the Vitest suite whenever a file under lib/ is saved, keeping the pure-logic layer (where the Req 14/15 guarantees live) type-safe and green.",
+      "matcher": "lib/.*\\.ts$",
+      "action": {
+        "type": "command",
+        "command": "npm run typecheck && npm run test",
+        "timeout": 180
+      }
+    }
+  ]
+}
